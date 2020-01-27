@@ -13,7 +13,7 @@ export const Footer = () => (
               href="#"
               className="footer__logo"
             >
-              <img src="/images/logo-white.png" alt="Uber Eats" />
+              <img src="./images/logo-white.png" alt="Uber Eats" />
             </a>
             <div
               className="footer__select-language"
@@ -29,7 +29,7 @@ export const Footer = () => (
                   },
                 ]}
                 value="en"
-                iconUrl="/images/world.png"
+                iconUrl="./images/world.png"
               />
             </div>
           </div>
@@ -39,13 +39,13 @@ export const Footer = () => (
               href="#"
               className="footer__app-store"
             >
-              <img src="/images/app-store-logo.png" alt="App store" />
+              <img src="./images/app-store-logo.png" alt="App store" />
             </a>
             <a
               href="#"
               className="footer__google-play"
             >
-              <img src="/images/google-play-logo.png" alt="Google play" />
+              <img src="./images/google-play-logo.png" alt="Google play" />
             </a>
           </div>
 
@@ -79,13 +79,13 @@ export const Footer = () => (
 
         <div className="footer__social">
           <a href="#" className="footer__social-link">
-            <img src="/images/facebook-logo.png" alt="uber facebook" />
+            <img src="./images/facebook-logo.png" alt="uber facebook" />
           </a>
           <a href="#" className="footer__social-link">
-            <img src="/images/twitter-logo.png" alt="uber twitter" />
+            <img src="./images/twitter-logo.png" alt="uber twitter" />
           </a>
           <a href="#" className="footer__social-link">
-            <img src="/images/instagram-logo.png" alt="uber instagram" />
+            <img src="./images/instagram-logo.png" alt="uber instagram" />
           </a>
         </div>
       </div>
