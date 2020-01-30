@@ -25,8 +25,6 @@ export const RestourantCard = (props) => {
   );
 };
 
-export default RestourantCard;
-
 RestourantCard.propTypes = {
   imageUrl: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,

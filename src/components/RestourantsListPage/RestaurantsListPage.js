@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
-import { RestourantCard } from '../RestourantCard';
+import { RestourantCard } from '../RestourantCard/RestourantCard';
 import './RestourantsListPage.scss';
 import Loader from '../Loader/Loader';
 import { Error } from '../Error';

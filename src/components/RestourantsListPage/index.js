@@ -1,14 +1,31 @@
 import { connect } from 'react-redux';
+
 import { RestaurantsListPage } from './RestaurantsListPage';
-import { loadRESTAURANTS } from '../../store/actions';
+
+import {
+  loadRESTAURANTS,
+  selectRestaurantsList,
+} from '../../store/reducers/restaurantsListDataReducer';
+
+import {
+  selectRestaurantsListError,
+} from '../../store/reducers/errorReducer';
+
+import {
+  selectIsLoading,
+} from '../../store/reducers/isLoadingReducer';
+
+import {
+  selectSearchAddress,
+} from '../../store/reducers/searchAddressReducer';
+
 import {
   selectChosenTime,
-  selectIsLoading,
-  selectRestaurantsList,
-  selectRestaurantsListError,
-  selectSearchAddress,
+} from '../../store/reducers/chosenTimeReducer';
+
+import {
   selectSearchQuery,
-} from '../../store/selectors';
+} from '../../store/reducers/searchQueryReducer';
 
 function mapState2Props(state) {
   return {

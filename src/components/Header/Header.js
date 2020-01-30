@@ -7,12 +7,8 @@ import 'rc-time-picker/assets/index.css';
 
 export const Header = (
   {
-    address,
-    setAdress,
-    time,
-    setTime,
-    search,
-    setSearch,
+    address, setAdress, time,
+    setTime, search, setSearch,
   }
 ) => {
   const [toggledLocation, setToggledLocation] = useState(false);
@@ -114,13 +110,13 @@ export const Header = (
         {
           (toggledSearch || toggledLocation)
           && (
-            <div className="header__mobile-search-section">
+            <div className="mobile-search-section">
               {
                 toggledLocation
               && (
-                <div className="header__mobile-location-container">
+                <div className="mobile-location-container">
 
-                  <div className="header__time--mobile">
+                  <div className="mobile-search-section__time--mobile">
                     <TimePicker
                       showSecond={false}
                       placeholder="ASAP"
@@ -135,7 +131,7 @@ export const Header = (
                     onChange={handleAdressChange}
                     placeholder="Address"
                     iconUrl="./images/place.svg"
-                    className="header__address--mobile"
+                    className="mobile-search-section__address--mobile"
                   />
                 </div>
               )
@@ -150,7 +146,7 @@ export const Header = (
                   onChange={handleSearchChange}
                   placeholder="Search"
                   iconUrl="./images/search.svg"
-                  className="header__search--mobile"
+                  className="mobile-search-section__search--mobile"
                 />
               )
               }
@@ -163,10 +159,9 @@ export const Header = (
                     setToggledSearch(false);
                   }
                 }
-                className="header__mobile-search-section__close-button"
-              >
-                <img src="./images/mobile-menu-close.png" alt="" />
-              </button>
+                className="mobile-search-section__close-button"
+              />
+
             </div>
           )
         }

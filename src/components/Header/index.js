@@ -1,15 +1,18 @@
 import { connect } from 'react-redux';
 import { Header } from './Header';
-import {
-  selectChosenTime,
-  selectSearchAddress,
-  selectSearchQuery,
-} from '../../store/selectors';
+
 import {
   setChosenTime,
+  selectChosenTime,
+} from '../../store/reducers/chosenTimeReducer';
+import {
   setSearchAddress,
+  selectSearchAddress,
+} from '../../store/reducers/searchAddressReducer';
+import {
   setSearchQuery,
-} from '../../store/actions';
+  selectSearchQuery,
+} from '../../store/reducers/searchQueryReducer';
 
 const mapStateToProps = state => ({
   address: selectSearchAddress(state),

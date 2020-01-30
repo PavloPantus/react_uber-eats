@@ -1,15 +1,13 @@
 .loader-container {
   position: relative;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
 }
 
-
-
 .lds-roller {
-  display: inline-block;
-  position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translateX(-80px);
   width: 80px * 2;
   height: 80px * 2;
 }
