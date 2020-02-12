@@ -49,7 +49,7 @@ export const Select = (props) => {
 
       <img
         className="select__arrow"
-        src="./images/arrow-back.png"
+        src="./react_uber-eats/images/arrow-back.png"
         alt="arrow down"
       />
     </div>

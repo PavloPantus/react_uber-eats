@@ -41,7 +41,7 @@ export const Header = (
 
           <img
             className="header__logo"
-            src="./images/logo.svg"
+            src="./react_uber-eats/images/logo.svg"
             alt="Uber Eats"
           />
 
@@ -50,7 +50,7 @@ export const Header = (
             value={address}
             onChange={handleAdressChange}
             placeholder="Address"
-            iconUrl="./images/place.svg"
+            iconUrl="./react_uber-eats/images/place.svg"
             className="header__address"
           />
 
@@ -68,7 +68,7 @@ export const Header = (
             value={search}
             onChange={handleSearchChange}
             placeholder="Search"
-            iconUrl="./images/search.svg"
+            iconUrl="./react_uber-eats/images/search.svg"
             className="header__search"
           />
 
@@ -83,7 +83,10 @@ export const Header = (
               className="header__mobile-location-toggler"
               type="button"
             >
-              <img src="./images/location-icon.png" alt="location-icon" />
+              <img
+                src="./react_uber-eats/images/location-icon.png"
+                alt="location-icon"
+              />
             </button>
 
             <button
@@ -96,7 +99,10 @@ export const Header = (
               className="header__mobile-search-toggler"
               type="button"
             >
-              <img src="./images/search-icon.png" alt="location-icon" />
+              <img
+                src="./react_uber-eats/images/search-icon.png"
+                alt="location-icon"
+              />
             </button>
 
           </div>
@@ -130,7 +136,7 @@ export const Header = (
                     value={address}
                     onChange={handleAdressChange}
                     placeholder="Address"
-                    iconUrl="./images/place.svg"
+                    iconUrl="./react_uber-eats/images/place.svg"
                     className="mobile-search-section__address--mobile"
                   />
                 </div>
@@ -145,7 +151,7 @@ export const Header = (
                   value={search}
                   onChange={handleSearchChange}
                   placeholder="Search"
-                  iconUrl="./images/search.svg"
+                  iconUrl="./react_uber-eats/images/search.svg"
                   className="mobile-search-section__search--mobile"
                 />
               )
