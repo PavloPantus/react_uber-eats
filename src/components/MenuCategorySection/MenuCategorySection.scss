@@ -1,0 +1,23 @@
+.menu-category {
+
+  &__title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 21px;
+  }
+
+  &__list {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(348px, 1fr));
+    grid-gap: 40px 20px;
+
+    @media (max-width: 1279px) {
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    }
+
+    @media (max-width: 767px) {
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+  }
+}

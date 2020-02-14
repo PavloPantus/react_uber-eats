@@ -5,6 +5,7 @@ import error from './reducers/errorReducer';
 import searchAddress from './reducers/searchAddressReducer';
 import chosenTime from './reducers/chosenTimeReducer';
 import searchQuery from './reducers/searchQueryReducer';
+import restaurantData from './reducers/restaurantDataReducer';
 
 export default combineReducers({
   restaurantsListData,
@@ -13,4 +14,5 @@ export default combineReducers({
   searchAddress,
   chosenTime,
   searchQuery,
+  restaurantData,
 });

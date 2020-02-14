@@ -53,29 +53,33 @@ export const RestaurantsListPage = (
   }
 
   return (
-    <div className="restaurants-list">
-      {filteredRestaurantsData.map(
-        (restaurant) => {
-          const {
-            uuid,
-            title,
-            heroImageUrl: imageUrl,
-            categories,
-            etaRange,
-          } = restaurant;
+    <div className="restaurants-list-page">
+      <div className="content">
+        <div className="restaurants-list">
+          {filteredRestaurantsData.map(
+            (restaurant) => {
+              const {
+                uuid,
+                title,
+                heroImageUrl: imageUrl,
+                categories,
+                etaRange,
+              } = restaurant;
 
-          return (
-            <RestourantCard
-              key={uuid}
-              uuid={uuid}
-              title={title}
-              imageUrl={imageUrl}
-              categories={categories}
-              etaRange={etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
-            />
-          );
-        }
-      )}
+              return (
+                <RestourantCard
+                  key={uuid}
+                  uuid={uuid}
+                  title={title}
+                  imageUrl={imageUrl}
+                  categories={categories}
+                  etaRange={etaRange ? etaRange.text : DEFAULT_ETA_RANGE}
+                />
+              );
+            }
+          )}
+        </div>
+      </div>
     </div>
   );
 };

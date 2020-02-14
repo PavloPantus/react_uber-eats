@@ -2,6 +2,11 @@
   $height: 367px;
   width: 100%;
   cursor: pointer;
+  display: block;
+  color: inherit;
+  &:visited {
+    color: inherit;
+  }
 
   &__img {
     height: $height * 0.7;
@@ -16,13 +21,11 @@
   &__categories {
     font-size: 14px;
     color: #757575;
-
     margin-bottom: 4px;
   }
 
   &__eta {
     font-size: 14px;
-
     display: inline-block;
     padding: 2px 8px;
     background-color: #F5F5F5;

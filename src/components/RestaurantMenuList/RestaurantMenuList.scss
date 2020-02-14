@@ -1,0 +1,128 @@
+.restaurant-menu {
+
+  &__tabs-navigation {
+    margin-top: 30px;
+    position: sticky;
+    top: 80px;
+    z-index: 1;
+    background-color: white;
+    @media  (max-width: 768px) {
+      top: 62px;
+    }
+
+    @media (max-width: 1279px) {
+      margin-top: 90px;
+    }
+
+    @media (max-width: 1279px) {
+      margin-top: 176px;
+    }
+  }
+
+  &__categories-list-navigation {
+    max-height: 200px;
+    overflow: scroll;
+    overflow-x: hidden;
+  }
+}
+
+.categories-list-navigation_closed {
+  display: flex;
+  overflow: auto;
+  overflow-y: hidden;
+
+
+  &__item {
+    position: relative;
+    height: 41px;
+    width: fit-content;
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:first-child{
+      margin-left: auto;
+    }
+    &:last-child{
+      margin-right: auto;
+    }
+
+    &:not(:first-child) {
+      margin-left: 24px;
+    }
+
+    &:before {
+      display: none;
+      content: '';
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      height: 1px;
+      background-color: #000;
+    }
+
+    &:hover {
+      &:before {
+        display: block;
+      }
+    }
+  }
+}
+
+.categories-list-navigation {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  justify-items: start;
+  align-items: start;
+  grid-gap: 10px 24px;
+
+  &__item {
+    white-space: nowrap;
+    font-size: 14px;
+    line-height: 21px;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+
+    & a {
+      height: 41px;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      &:before {
+        display: none;
+        content: '';
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 1px;
+        background-color: #000;
+      }
+
+      &:hover {
+        &:before {
+          display: block;
+        }
+      }
+    }
+
+
+  }
+}
+
+.categories-list {
+
+  &__category {
+    margin-top: 40px;
+  }
+}
+
+
+/*tabular menu tab-heading*/
+
+.ui.tabular.menu .item {
+  padding: 5px;
+}

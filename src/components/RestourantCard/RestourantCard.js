@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import './RestourantCard.scss';
+import { Link } from 'react-router-dom';
 
 export const RestourantCard = (props) => {
   const {
@@ -8,11 +9,11 @@ export const RestourantCard = (props) => {
     title,
     categories,
     etaRange,
-    // uuid,
+    uuid,
   } = props;
 
   return (
-    <div className="restaurant-card">
+    <Link to={`/restaurantId/${uuid}`} className="restaurant-card">
       <img src={imageUrl} alt={title} className="restaurant-card__img" />
       <h2 className="restaurant-card__title">{title}</h2>
       <div className="restaurant-card__categories">
@@ -21,7 +22,7 @@ export const RestourantCard = (props) => {
       <div className="restaurant-card__eta">
         {etaRange}
       </div>
-    </div>
+    </Link>
   );
 };
 
@@ -30,6 +31,7 @@ RestourantCard.propTypes = {
   title: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.string),
   etaRange: PropTypes.string,
+  uuid: PropTypes.string.isRequired,
 };
 
 RestourantCard.defaultProps = {
