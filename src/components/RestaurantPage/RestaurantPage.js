@@ -89,16 +89,18 @@ export const RestaurantPage = (
 
 RestaurantPage.propTypes = {
   restaurantData: PropTypes.shape({
-    heroImageUrls: PropTypes.arrayOf(PropTypes.string).isRequired,
+    heroImageUrls: PropTypes.arrayOf(PropTypes.object).isRequired,
     title: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.string).isRequired,
-    etaRange: PropTypes.oneOfType(
-      [PropTypes.oneOf(
-        [null]
-      ), PropTypes.string]
-    ).isRequired,
-  }).isRequired,
+    etaRange: PropTypes.oneOfType([
+      PropTypes.oneOf([null]), PropTypes.string,
+    ]),
+  }),
   loadRestaurantData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   restaurantMenuSectionsInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
+};
+
+RestaurantPage.defaultProps = {
+  restaurantData: null,
 };

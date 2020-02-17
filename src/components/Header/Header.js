@@ -39,11 +39,13 @@ export const Header = (
 
         <div className="header-inner">
 
-          <img
-            className="header__logo"
-            src="./react_uber-eats/images/logo.svg"
-            alt="Uber Eats"
-          />
+          <a href="/">
+            <img
+              className="header__logo"
+              src="./react_uber-eats/images/logo.svg"
+              alt="Uber Eats"
+            />
+          </a>
 
           <Input
             name="address"
