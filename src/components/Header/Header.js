@@ -2,6 +2,7 @@ import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 import './Header.scss';
 import TimePicker from 'rc-time-picker';
+import { Link } from 'react-router-dom';
 import { Input } from '../Input/Input';
 import 'rc-time-picker/assets/index.css';
 
@@ -39,13 +40,13 @@ export const Header = (
 
         <div className="header-inner">
 
-          <a href="/">
+          <Link to="/">
             <img
               className="header__logo"
               src="./react_uber-eats/images/logo.svg"
               alt="Uber Eats"
             />
-          </a>
+          </Link>
 
           <Input
             name="address"
