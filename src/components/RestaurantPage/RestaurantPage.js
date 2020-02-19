@@ -26,7 +26,10 @@ export const RestaurantPage = (
 
   if (isLoading) {
     return (
-      <Loader />
+      <>
+        <ScrollToTopOnMount />
+        <Loader />
+      </>
     );
   }
 
@@ -34,6 +37,7 @@ export const RestaurantPage = (
     return (
       <>
         <ScrollToTopOnMount />
+
         <div className="restaurant__page">
           <div
             className="restaurant__background-container"
@@ -84,7 +88,12 @@ export const RestaurantPage = (
     );
   }
 
-  return <Loader />;
+  return (
+    <>
+      <ScrollToTopOnMount />
+      <Loader />
+    </>
+  );
 };
 
 RestaurantPage.propTypes = {

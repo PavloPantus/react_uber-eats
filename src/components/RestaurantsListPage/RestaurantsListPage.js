@@ -17,7 +17,9 @@ export const RestaurantsListPage = (
     search }
 ) => {
   useEffect(() => {
-    loadRESTAURANTS();
+    if (restaurantsData.length === 0) {
+      loadRESTAURANTS();
+    }
   }, []);
 
   const filteredRestaurantsData = useMemo(

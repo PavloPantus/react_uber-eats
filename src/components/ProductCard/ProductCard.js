@@ -46,6 +46,6 @@ ProductCard.propTypes = {
     price: PropTypes.number.isRequired,
     imageUrl: PropTypes.oneOfType(
       [PropTypes.oneOf([null]), PropTypes.string]
-    ).isRequired,
+    ),
   }).isRequired,
 };
