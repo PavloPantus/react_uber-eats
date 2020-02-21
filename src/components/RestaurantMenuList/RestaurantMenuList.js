@@ -22,6 +22,8 @@ export const RestaurantMenuList = ({ restaurantMenuSectionsInfo }) => {
     }, []
   );
 
+  /* refs for each nav item */
+
   const navItemsRefs = useMemo(
     () => {
       const NewNavBaRRefs = {};
@@ -39,13 +41,21 @@ export const RestaurantMenuList = ({ restaurantMenuSectionsInfo }) => {
   const navBarRef = useRef(null);
 
   useEffect(() => {
-    const throttledListener = throttle(
+    let throttledListener;
+
+    document.removeEventListener('scroll', throttledListener);
+
+    throttledListener = throttle(
       () => {
         Object.entries(sectionsRefs)
           .forEach(
             (sectionsRef) => {
               const fromTop = window.scrollY + 74;
               const section = sectionsRef[1].current;
+
+              if (!section) {
+                return;
+              }
 
               if (section.offsetTop <= fromTop
                 && section.offsetTop + section.offsetHeight > fromTop) {
@@ -63,7 +73,7 @@ export const RestaurantMenuList = ({ restaurantMenuSectionsInfo }) => {
     return function cleanup() {
       document.removeEventListener('scroll', throttledListener);
     };
-  }, []);
+  }, [sectionsRefs]);
 
   return (
     <section className="restaurant-menu">

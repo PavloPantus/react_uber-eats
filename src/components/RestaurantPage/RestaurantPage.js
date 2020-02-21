@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Loader from '../Loader/Loader';
 import { ScrollToTopOnMount } from '../ScrollToTop';
 import { RestaurantMenuList } from '../RestaurantMenuList';
+import Error from '../Error/index';
 
 const DEFAULT_ETA_RANGE = '20 - 30 min';
 
@@ -14,6 +15,7 @@ export const RestaurantPage = (
     loadRestaurantData,
     isLoading,
     restaurantMenuSectionsInfo,
+    error,
   }
 ) => {
   const match = useRouteMatch();
@@ -24,7 +26,7 @@ export const RestaurantPage = (
     loadRestaurantData(restaurantAddress);
   }, []);
 
-  if (isLoading) {
+  if (isLoading && !restaurantData) {
     return (
       <>
         <ScrollToTopOnMount />
@@ -33,12 +35,17 @@ export const RestaurantPage = (
     );
   }
 
+  if (error && !restaurantData) {
+    return <Error message={error} />;
+  }
+
   if (restaurantData) {
     return (
       <>
         <ScrollToTopOnMount />
 
         <div className="restaurant__page">
+
           <div
             className="restaurant__background-container"
             style={
@@ -108,6 +115,7 @@ RestaurantPage.propTypes = {
   loadRestaurantData: PropTypes.func.isRequired,
   isLoading: PropTypes.bool.isRequired,
   restaurantMenuSectionsInfo: PropTypes.arrayOf(PropTypes.object).isRequired,
+  error: PropTypes.bool.isRequired,
 };
 
 RestaurantPage.defaultProps = {

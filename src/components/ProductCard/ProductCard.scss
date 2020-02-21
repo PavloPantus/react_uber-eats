@@ -3,6 +3,11 @@
   height: 158px;
   border: 1px solid #E0E0E0;
   display: flex;
+  cursor: pointer;
+  &:hover {
+    border-color: #9df58e;
+    box-shadow: 0 0 4px 1px #9df58e;
+  }
 
   &__info {
     width: 348px - 158px;

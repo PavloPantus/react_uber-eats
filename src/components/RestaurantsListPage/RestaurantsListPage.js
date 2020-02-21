@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { RestourantCard } from '../RestourantCard/RestourantCard';
 import './RestourantsListPage.scss';
 import Loader from '../Loader/Loader';
-import { Error } from '../Error';
+import Error from '../Error/index';
 
 const DEFAULT_ETA_RANGE = '20 - 30 min';
 
