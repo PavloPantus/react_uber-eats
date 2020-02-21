@@ -101,6 +101,13 @@ export const RestaurantMenuList = ({ restaurantMenuSectionsInfo }) => {
                     }
                   >
                     <Scroll.Link
+                      tabIndex={0}
+                      onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                          Scroll.scroller
+                            .scrollTo(`${section.title.split(' ').join('-')}`);
+                        }
+                      }}
                       className="categories-list-navigation__link"
                       activeClass="categories-list-navigation__link_active"
                       spy
