@@ -75,7 +75,7 @@ export const Header = (
             className="header__address control"
             onClick={handleLocationsContainer}
             onKeyDown={(event) => {
-              if (event.key === 'enter') {
+              if (event.key === 'Enter') {
                 handleLocationsContainer();
               }
             }}
@@ -179,14 +179,36 @@ export const Header = (
                     />
                   </div>
 
-                  <Input
-                    name="address"
-                    value={address}
-                    onChange={handleAdressChange}
-                    placeholder="Address"
-                    iconUrl="./react_uber-eats/images/place.svg"
-                    className="mobile-search-section__address--mobile"
-                  />
+                  <div
+                    className="mobile-search-section__address--mobile control"
+                    onClick={handleLocationsContainer}
+                    onKeyDown={(event) => {
+                      if (event.key === 'Enter') {
+                        handleLocationsContainer();
+                      }
+                    }}
+                  >
+                    <img
+                      className="input__icon"
+                      src="./react_uber-eats/images/place.svg"
+                      alt=""
+                    />
+                    <Dropdown
+                      ref={locationsRef}
+                      onChange={handleAdressChange}
+                      options={
+                        locationsList
+                          .map(
+                            item => ({
+                              key: item.id, text: item.title, value: item.id,
+                            })
+                          )
+                      }
+                      placeholder="Location"
+                      selection
+                      value={address}
+                    />
+                  </div>
                 </div>
               )
               }
