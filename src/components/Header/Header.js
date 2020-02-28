@@ -1,23 +1,46 @@
-import React, { useState, useCallback } from 'react';
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+import React, { useState, useCallback, useEffect, useRef } from 'react';
+import { useLocation, useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import './Header.scss';
 import TimePicker from 'rc-time-picker';
 import { Link } from 'react-router-dom';
+import { Dropdown } from 'semantic-ui-react';
 import { Input } from '../Input/Input';
 import 'rc-time-picker/assets/index.css';
+import 'semantic-ui-css/semantic.min.css';
 
 export const Header = (
   {
     address, setAdress, time,
     setTime, search, setSearch,
+    locationsList, loadLocations,
   }
 ) => {
+  const location = useLocation();
+  const history = useHistory();
+  const searchParams = new URLSearchParams(location.search);
+
   const [toggledLocation, setToggledLocation] = useState(false);
   const [toggledSearch, setToggledSearch] = useState(false);
 
+  const locationsRef = useRef(null);
+  const handleLocationsContainer = () => {
+    locationsRef.current.open();
+  };
+
+  useEffect(() => {
+    loadLocations();
+  }, []);
+
   const handleAdressChange = useCallback(
-    ({ target }) => {
-      setAdress(target.value);
+    (event, { value }) => {
+      setAdress(value);
+      searchParams.set('location', value);
+      history.push({
+        pathname: '/',
+        search: `?${searchParams.toString()}`,
+      });
     }, []
   );
 
@@ -40,7 +63,7 @@ export const Header = (
 
         <div className="header-inner">
 
-          <Link to="/">
+          <Link to={`/?${searchParams.toString()}`}>
             <img
               className="header__logo"
               src="./react_uber-eats/images/logo.svg"
@@ -48,14 +71,36 @@ export const Header = (
             />
           </Link>
 
-          <Input
-            name="address"
-            value={address}
-            onChange={handleAdressChange}
-            placeholder="Address"
-            iconUrl="./react_uber-eats/images/place.svg"
-            className="header__address"
-          />
+          <div
+            className="header__address control"
+            onClick={handleLocationsContainer}
+            onKeyDown={(event) => {
+              if (event.key === 'enter') {
+                handleLocationsContainer();
+              }
+            }}
+          >
+            <img
+              className="input__icon"
+              src="./react_uber-eats/images/place.svg"
+              alt=""
+            />
+            <Dropdown
+              ref={locationsRef}
+              onChange={handleAdressChange}
+              options={
+                locationsList
+                  .map(
+                    item => ({
+                      key: item.id, text: item.title, value: item.id,
+                    })
+                  )
+              }
+              placeholder="Location"
+              selection
+              value={address}
+            />
+          </div>
 
           <div className="header__time">
             <TimePicker
@@ -188,4 +233,14 @@ Header.propTypes = {
   setTime: PropTypes.func.isRequired,
   search: PropTypes.string.isRequired,
   setSearch: PropTypes.func.isRequired,
+  locationsList: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string, title: PropTypes.string,
+    })
+  ),
+  loadLocations: PropTypes.func.isRequired,
+};
+
+Header.defaultProps = {
+  locationsList: [],
 };

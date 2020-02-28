@@ -9,9 +9,11 @@ export const saveRESTAURANTS = data => ({
   payload: data,
 });
 
-export const loadRESTAURANTS = () => (dispatch) => {
+export const loadRESTAURANTS = location => (dispatch) => {
   dispatch(setIsLoading());
-  fetch('https://mate-uber-eats-api.herokuapp.com/api/v1/restaurants')
+  fetch(`https://mate-uber-eats-api.herokuapp.com/api/v1/restaurants?location=${
+    location
+  }`)
     .then(res => res.json())
     .then(({ data }) => {
       dispatch(saveRESTAURANTS(data));

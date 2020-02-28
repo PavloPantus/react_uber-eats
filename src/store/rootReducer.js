@@ -7,6 +7,7 @@ import chosenTime from './reducers/chosenTimeReducer';
 import searchQuery from './reducers/searchQueryReducer';
 import restaurantData from './reducers/restaurantDataReducer';
 import modalOrderData from './reducers/modalOrderDataReducer';
+import locations from './reducers/locationsReducer';
 
 export default combineReducers({
   restaurantsListData,
@@ -17,4 +18,5 @@ export default combineReducers({
   searchQuery,
   restaurantData,
   modalOrderData,
+  locations,
 });

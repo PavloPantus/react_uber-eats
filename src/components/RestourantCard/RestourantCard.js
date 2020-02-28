@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import './RestourantCard.scss';
 import { Link } from 'react-router-dom';
+import { useLocation } from 'react-router';
 
 export const RestourantCard = (props) => {
   const {
@@ -11,9 +12,14 @@ export const RestourantCard = (props) => {
     etaRange,
     uuid,
   } = props;
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
 
   return (
-    <Link to={`/restaurantId/${uuid}`} className="restaurant-card">
+    <Link
+      to={`/restaurantId/${uuid}?${searchParams.toString()}`}
+      className="restaurant-card"
+    >
       <img
         loading="lazy"
         src={imageUrl}

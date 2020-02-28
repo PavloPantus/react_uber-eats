@@ -49,6 +49,7 @@ export const Input = React.memo((props) => {
       )}
       <input
         ref={inputRef}
+
         onFocus={handleFocus}
         onBlur={handleBlur}
         type={type}

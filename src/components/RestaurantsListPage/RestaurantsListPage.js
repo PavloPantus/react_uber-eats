@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import PropTypes from 'prop-types';
+import { useLocation, useHistory } from 'react-router';
 import { RestourantCard } from '../RestourantCard/RestourantCard';
 import './RestourantsListPage.scss';
 import Loader from '../Loader/Loader';
@@ -16,11 +17,20 @@ export const RestaurantsListPage = (
     time,
     search }
 ) => {
+  const location = useLocation();
+  const history = useHistory();
+  const searchParams = new URLSearchParams(location.search);
+
   useEffect(() => {
-    if (restaurantsData.length === 0) {
-      loadRESTAURANTS();
+    if (!searchParams.get('location')) {
+      searchParams.set('location', 'kyiv');
     }
-  }, []);
+
+    history.push({
+      search: `?${searchParams.toString()}`,
+    });
+    loadRESTAURANTS(searchParams.get('location'));
+  }, [address]);
 
   const filteredRestaurantsData = useMemo(
     () => restaurantsData.filter(
@@ -91,7 +101,7 @@ RestaurantsListPage.propTypes = {
     PropTypes.shape({})
   ),
   loadRESTAURANTS: PropTypes.func.isRequired,
-  error: PropTypes.string,
+  error: PropTypes.bool,
   isLoading: PropTypes.bool,
   address: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,

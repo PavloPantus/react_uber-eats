@@ -1,7 +1,8 @@
 /* eslint-disable no-nested-ternary,max-len */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import './ModalWindow.scss';
 import PropTypes from 'prop-types';
+import classNames from 'classnames';
 import Loader from '../Loader/Loader';
 import Error from '../Error/index';
 
@@ -26,14 +27,31 @@ export const ModalWindow = (
     };
   }, []);
 
+  const [closeClass, setCloseClass] = useState(false);
+  const animationDuration = 0.3;
+
+  const closeHandle = () => {
+    setCloseClass(true);
+    closeModal(animationDuration * 1000);
+  };
+
   return (
     // eslint-disable-next-line max-len
     // eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions
     <div
-      className="modal-container"
-      onClick={() => {
-        closeModal();
+      className={
+        classNames(
+          [
+            'modal-container',
+            { 'modal-container_close': closeClass },
+            { 'modal-container_open': !closeClass },
+          ]
+        )
+      }
+      style={{
+        animationDuration: `${animationDuration}s`,
       }}
+      onClick={closeHandle}
     >
 
       {/* eslint-disable-next-line max-len */}
@@ -61,9 +79,7 @@ export const ModalWindow = (
                         type="button"
                         className="order__close-button"
                         onClick={
-                          () => {
-                            closeModal();
-                          }
+                          closeHandle
                         }
                       />
 

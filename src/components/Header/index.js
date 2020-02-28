@@ -13,11 +13,17 @@ import {
   setSearchQuery,
   selectSearchQuery,
 } from '../../store/reducers/searchQueryReducer';
+import {
+  loadLocations,
+  selectLocationsList,
+} from '../../store/reducers/locationsReducer';
 
 const mapStateToProps = state => ({
   address: selectSearchAddress(state),
   time: selectChosenTime(state),
   search: selectSearchQuery(state),
+  locationsList: selectLocationsList(state),
+
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -30,6 +36,8 @@ const mapDispatchToProps = dispatch => ({
   setSearch: (value) => {
     dispatch(setSearchQuery(value));
   },
+
+  loadLocations: () => dispatch(loadLocations()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Header);

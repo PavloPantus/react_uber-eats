@@ -17,8 +17,10 @@ export const ProductCard = ({ productInfo }) => {
         && (
           <ModalWindow
             uuid={productInfo.uuid}
-            closeModal={() => {
-              setShowModalOrderData(false);
+            closeModal={(animationDuration) => {
+              setTimeout(() => {
+                setShowModalOrderData(false);
+              }, animationDuration);
             }}
           />
         )

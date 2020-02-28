@@ -72,7 +72,7 @@ export const RestaurantPage = (
                   <div className="restaurant__eta-range">
                     {
                       restaurantData.etaRange
-                        ? restaurantData.etaRange : DEFAULT_ETA_RANGE
+                        ? restaurantData.etaRange.text : DEFAULT_ETA_RANGE
                     }
                   </div>
                   <div className="restaurant__address">
@@ -109,7 +109,9 @@ RestaurantPage.propTypes = {
     title: PropTypes.string.isRequired,
     categories: PropTypes.arrayOf(PropTypes.string).isRequired,
     etaRange: PropTypes.oneOfType([
-      PropTypes.oneOf([null]), PropTypes.string,
+      PropTypes.oneOf([null]), PropTypes.shape({
+        text: PropTypes.string,
+      }),
     ]),
   }),
   loadRestaurantData: PropTypes.func.isRequired,

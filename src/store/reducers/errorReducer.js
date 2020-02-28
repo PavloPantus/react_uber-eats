@@ -12,7 +12,7 @@ export const setRestaurantsError = error => ({
   payload: error,
 });
 
-export default (state = null, action) => {
+export default (state = false, action) => {
   switch (action.type) {
     case SET_RESTAURANTS_ERROR: {
       const { payload } = action;
