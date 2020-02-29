@@ -22,6 +22,7 @@
     & .ui.selection.dropdown {
       border: none;
       width: 100%;
+      min-width: 1%;
     }
   }
 
@@ -114,6 +115,7 @@
     & .ui.selection.dropdown {
       border: none;
       width: 100%;
+      min-width: 1%;
     }
 
     &:before {
