@@ -15,11 +15,16 @@ export const RestaurantsListPage = (
     isLoading,
     address,
     time,
+    setSearchQuery,
     search }
 ) => {
   const location = useLocation();
   const history = useHistory();
   const searchParams = new URLSearchParams(location.search);
+
+  useEffect(() => {
+    setSearchQuery('');
+  }, []);
 
   useEffect(() => {
     if (!searchParams.get('location')) {
@@ -106,6 +111,7 @@ RestaurantsListPage.propTypes = {
   address: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
   search: PropTypes.string.isRequired,
+  setSearchQuery: PropTypes.func.isRequired,
 };
 
 RestaurantsListPage.defaultProps = {

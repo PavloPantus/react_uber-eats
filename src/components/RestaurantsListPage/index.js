@@ -25,6 +25,7 @@ import {
 
 import {
   selectSearchQuery,
+  setSearchQuery,
 } from '../../store/reducers/searchQueryReducer';
 
 function mapState2Props(state) {
@@ -40,6 +41,7 @@ function mapState2Props(state) {
 
 const mapDispatch2Props = {
   loadRESTAURANTS,
+  setSearchQuery,
 };
 const Enhanced = connect(
   mapState2Props,
