@@ -65,7 +65,7 @@ export const Input = React.memo((props) => {
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  value: PropTypes.string.isRequired,
+  value: PropTypes.string,
   onChange: PropTypes.func.isRequired,
   iconUrl: PropTypes.string,
   type: PropTypes.string,
@@ -79,4 +79,5 @@ Input.defaultProps = {
   type: 'text',
   placeholder: '',
   className: '',
+  value: undefined,
 };

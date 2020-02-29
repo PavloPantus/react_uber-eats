@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import './ProductCard.scss';
 import PropTypes from 'prop-types';
-import ModalWindow from '../ModalWindow';
+import { ModalWindow } from '../ModalWindow/ModalWindow';
+import ModalWindowOrder from '../ModalWindowOrder/index';
 
 export const ProductCard = ({ productInfo }) => {
   const [showModalOrderData, setShowModalOrderData] = useState(false);
@@ -15,14 +16,23 @@ export const ProductCard = ({ productInfo }) => {
       {
         showModalOrderData
         && (
+
           <ModalWindow
-            uuid={productInfo.uuid}
-            closeModal={(animationDuration) => {
-              setTimeout(() => {
-                setShowModalOrderData(false);
-              }, animationDuration);
+            closeModal={() => {
+              setShowModalOrderData(false);
             }}
-          />
+          >
+
+            {closeHandle => (
+              <ModalWindowOrder
+                uuid={productInfo.uuid}
+                closeHandle={closeHandle}
+              />
+            )
+            }
+
+          </ModalWindow>
+
         )
       }
 

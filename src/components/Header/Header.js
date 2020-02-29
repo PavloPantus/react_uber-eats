@@ -50,11 +50,34 @@ export const Header = (
     }, []
   );
 
-  const handleSearchChange = useCallback(
-    ({ target }) => {
-      setSearch(target.value);
+  const debounce = useCallback(
+    (callback, delay) => {
+      let timer;
+
+      return (...args) => {
+        clearTimeout(timer);
+        timer = setTimeout(callback, delay, ...args);
+      };
     }, []
   );
+
+  const debouncedHandleSearchChange = (value) => {
+    if (
+      `${location.pathname}${searchParams.toString()}`
+      !== `/${searchParams.toString()}`
+    ) {
+      history.push({
+        pathname: '/',
+        search: `${searchParams.toString()}`,
+      });
+    }
+
+    (debounce(
+      () => {
+        setSearch(value);
+      }, 1000
+    ))();
+  };
 
   return (
     <header className="header">
@@ -113,8 +136,10 @@ export const Header = (
 
           <Input
             name="search"
-            value={search}
-            onChange={handleSearchChange}
+            // value={search}
+            onChange={(event) => {
+              debouncedHandleSearchChange(event.target.value);
+            }}
             placeholder="Search"
             iconUrl="./react_uber-eats/images/search.svg"
             className="header__search"
@@ -218,8 +243,10 @@ export const Header = (
               && (
                 <Input
                   name="search"
-                  value={search}
-                  onChange={handleSearchChange}
+                  // value={search}
+                  onChange={(event) => {
+                    debouncedHandleSearchChange(event.target.value);
+                  }}
                   placeholder="Search"
                   iconUrl="./react_uber-eats/images/search.svg"
                   className="mobile-search-section__search--mobile"
